@@ -64,7 +64,33 @@
      *  (C,D,E)  - (F,J)
      *
      */
-##### 4 测试DAG 执行
+     
+      详见chain方法： 关键代码如下
+     
+     private void chain_(Set sources, final LinkedHashSetMultimap foutChain, final LinkedHashSetMultimap finChain) {
+         sources.forEach(sourceNode -> {
+     
+           ArrayList<Object> maxStage = Lists.newArrayList();
+           findMaxStage(sourceNode, maxStage);
+           if (maxStage.size() > 1) { //存在需要合并的stage
+             addVertex(foutChain, finChain, maxStage);//添加一个新节点
+             Object o = maxStage.get(maxStage.size() - 1); //最后一个节点
+             reChain_(foutChain, finChain, maxStage, o);
+           }
+           if (maxStage.size() == 1) {
+             //不存在需要合并的stage
+             addVertex(foutChain, finChain, sourceNode);//添加一个新节点
+             Set subNodes = outDegree.get(sourceNode);
+             addSubNodeage(foutChain, finChain, sourceNode, subNodes);
+           }
+         });
+       }
+     
+     
+     
+      
+     
+4 测试DAG 执行
   
   测试程序: 详见 DAGExecTest
   1 新建一个task  只打印一句话
