@@ -184,6 +184,30 @@
       i am running  my name is f  finish ThreadID: 11
       i am running  my name is j  finish ThreadID: 11
       stage 结束 ：  task chain f-j
+      测试执行关键代码如下：
+      chain.execute(col -> {
+            Set set = (Set) col;
+            List<CompletableFuture> completableFutures = Lists.newArrayList();
+            StringBuilder sb = new StringBuilder();
+            set.stream().forEach(x -> {
+              if (x instanceof Task) {
+                CompletableFuture<Void> future = CompletableFuture.runAsync((Task) x, executorService);
+                completableFutures.add(future);
+                sb.append(" task detached:" + ((Task) x).getTaskName()).append(",");
+              }
+              if (x instanceof List) {
+                List<Task> taskList = (List) x;
+                CompletableFuture<Void> future = CompletableFuture.runAsync(()->
+                  taskList.forEach(Task::run));
+                completableFutures.add(future);
+                sb.append(
+                    " task chain " + Joiner.on("-").join(taskList.stream().map(Task::getTaskName).collect(Collectors.toList())));
+              }
+            });
+            CompletableFuture.allOf(completableFutures.toArray(new CompletableFuture[completableFutures.size()])).join();
+            System.out.println("stage 结束 ： " + sb.toString());
+            System.out.println("-----------------------------------------------");
+          });
       
       mail:787069354@qq.com
 ```
