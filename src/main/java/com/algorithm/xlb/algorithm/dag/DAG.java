@@ -33,14 +33,6 @@ public final class DAG {
     this.inDegree = inDegree;
   }
 
-  public LinkedHashSetMultimap getOutDegree() {
-    return outDegree;
-  }
-
-  public LinkedHashSetMultimap getInDegree() {
-    return inDegree;
-  }
-
   /**
    *  拓扑排序检测 是否有环
    */
