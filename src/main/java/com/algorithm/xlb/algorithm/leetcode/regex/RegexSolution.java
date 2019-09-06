@@ -8,6 +8,12 @@ package com.algorithm.xlb.algorithm.leetcode.regex;
 public class RegexSolution {
 
 
+  /**
+   *   text =  abc   pattern = a*b
+   *         *是0个的时候 a*b = b  =>  （b 匹配 abc） 递归
+   *  匹配
+   *         *是多个时候  a 匹配 a 且  （bc 匹配  a*b）递归
+   */
   public static boolean isMatch(String text, String pattern) {
 
     if (pattern.isEmpty()) {
