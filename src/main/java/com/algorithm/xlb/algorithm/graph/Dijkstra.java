@@ -85,11 +85,11 @@ public class Dijkstra {
       }
       flag[k] = 1;
 
-      //更新 graph 值
+      //以上求出了原点到k的距离是 min
       for (int j = 0; j < 6; j++) {
-        //原点到k的距离  +  k到j距离
+        //k到 j距离 =   原点到k的距离  +  k到j距离
         int len = graph[k][j] == inf ? inf : min + graph[k][j];
-
+        //原点到j距离小于 原点到k的距离 +  k到j的距离 跟新 原点到j的距离最小值为 dis[j]
         if (flag[j] == 0 && len < dis[j]) {
           dis[j] = len;
         }
