@@ -10,6 +10,13 @@ import java.util.Stack;
  * 贪心算法： 每次选取最大的 ，寻找相对最优解
  * DFS算法实现
  *
+ * 可以用A*搜索算法是实现
+ * f = g + h
+ * g => 其实点到目标点的代价
+ * h => 目标点到终点的代价
+ *
+ * A*其实是基于BFS的  如下是基于DFS的
+ *
  * @author xingliangbo
  * @version $Id: v 0.1 2019-09-04 20:12 xingliangbo Exp $
  */
