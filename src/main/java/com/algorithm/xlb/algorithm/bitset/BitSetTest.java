@@ -1,7 +1,10 @@
 package com.algorithm.xlb.algorithm.bitset;
 
+import com.google.common.collect.Maps;
+
 import java.util.Arrays;
 import java.util.BitSet;
+import java.util.HashMap;
 
 /**
  *
@@ -39,8 +42,25 @@ public class BitSetTest {
 
 
     System.out.println(-1 & x);
-    System.out.println(Integer.toBinaryString(Integer.MIN_VALUE));
+    System.out.println(Integer.MAX_VALUE);
+    System.out.println(Integer.MIN_VALUE);
+    System.out.println(Integer.toBinaryString(-2147483648));
     System.out.println("1111111111111111111111111111111".length());
+    HashMap<Object, Object> objectObjectHashMap = Maps.newHashMap();
+    objectObjectHashMap.hashCode();
+    //111 => 11
+    System.out.println("7 >> 1 = " + (7 >> 1));
+    //相当于除以2
+    System.out.println("8 >> 1 = " + (8 >> 1));
+    //111 => 1110 + 7 +2
+    System.out.println("7 << 1 = " + (7 << 1));
+    System.out.println("8 << 1 = " + (8 << 1));
+    //1000000...1 => 1000000...10
+    System.out.println("-1 << 1 = " + (-1 << 1));
+    System.out.println("-1 >> 1 = " + (-1 >> 1));
+    //1000000...1 => 01000000...0 符号位也会移动
+    System.out.println("-1 >> 1 = " + (-1 >>> 1) + " 2^31 " + Integer.MAX_VALUE);
+
 //    System.out.println(bitSet);
 //    System.out.println(Arrays.toString(bitSet.toByteArray()));
 //    System.out.println(bitSet.get(3));
