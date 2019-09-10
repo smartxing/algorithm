@@ -14,6 +14,7 @@ import java.util.Stack;
  * f = g + h
  * g => 其实点到目标点的代价
  * h => 目标点到终点的代价
+ * 领f = Max() 寻找最大的价值
  *
  * A*其实是基于BFS的  如下是基于DFS的
  *
